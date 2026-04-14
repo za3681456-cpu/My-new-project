@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Billing System</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            width: 400px;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input, button {
+            width: 90%;
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        #result {
+            margin-top: 15px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Smart Billing System</h2>
+
+    <input type="text" id="name" placeholder="Enter your name">
+    <input type="number" id="amount" placeholder="Enter purchase amount">
+
+    <button onclick="calculateBill()">Generate Bill</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+
+function calculateBill() {
+
+    let name = document.getElementById("name").value;
+    let amount = parseFloat(document.getElementById("amount").value);
+
+    if (name === "" || isNaN(amount) || amount <= 0) {
+        document.getElementById("result").innerHTML =
+        "❌ Please enter valid name and positive amount!";
+        return;
+    }
+
+    let discount = 0;
+
+    if (amount >= 5000) {
+        discount = amount * 0.20;
+    }
+    else if (amount >= 3000) {
+        discount = amount * 0.10;
+    }
+    else if (amount >= 1000) {
+        discount = amount * 0.05;
+    }
+
+    let afterDiscount = amount - discount;
+
+    let tax = afterDiscount * 0.05;
+
+    let finalBill = afterDiscount + tax;
+
+    let status = "";
+
+    if (finalBill > 4000) {
+        status = "🌟 Premium Customer";
+    } else {
+        status = "Regular Customer";
+    }
+
+    document.getElementById("result").innerHTML =
+        "<h3>Bill Details</h3>" +
+        "Name: " + name + "<br>" +
+        "Original Amount: " + amount.toFixed(2) + "<br>" +
+        "Discount: " + discount.toFixed(2) + "<br>" +
+        "Tax (5%): " + tax.toFixed(2) + "<br>" +
+        "<b>Final Bill: " + finalBill.toFixed(2) + "</b><br>" +
+        "Status: " + status;
+}
+
+</script>
+
+</body>
+</html>
