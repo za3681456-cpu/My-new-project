@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Management System</title>
 
-<!-- jQuery CDN -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<!-- jQuery CDN (IMPORTANT FIX) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <style>
+
 body {
     font-family: Arial, sans-serif;
     background: #f2f2f2;
@@ -49,76 +50,111 @@ button {
     border: none;
     margin-left: 10px;
 }
+
 </style>
 </head>
 
 <body>
 
 <div class="container">
-    <h2>Student Management System</h2>
 
-    <form id="studentForm">
-        <input type="text" id="name" placeholder="Enter Name" required>
-        <input type="number" id="age" placeholder="Enter Age" required>
-        <input type="text" id="course" placeholder="Enter Course" required>
-        <br>
-        <button type="submit">Add Student</button>
-    </form>
+<h2>Student Management System</h2>
 
-    <h3>Student List</h3>
-    <div id="studentList"></div>
+<form id="studentForm">
+
+<input type="text" id="name" placeholder="Enter Name" required>
+
+<input type="number" id="age" placeholder="Enter Age" required>
+
+<input type="text" id="course" placeholder="Enter Course" required>
+
+<br>
+
+<button type="submit">Add Student</button>
+
+</form>
+
+<h3>Student List</h3>
+
+<div id="studentList"></div>
+
 </div>
+
 
 <script>
 
 // Array to store students
 let students = [];
 
+
 // Function to display students
 function displayStudents() {
-    $("#studentList").html("");
 
-    students.forEach(function(student, index) {
-        $("#studentList").append(`
-            <div class="student">
-                Name: ${student.name} | 
-                Age: ${student.age} | 
-                Course: ${student.course}
-                <button class="deleteBtn" onclick="deleteStudent(${index})">Delete</button>
-            </div>
-        `);
-    });
+$("#studentList").html("");
+
+students.forEach(function(student, index) {
+
+$("#studentList").append(`
+<div class="student">
+Name: ${student.name} |
+Age: ${student.age} |
+Course: ${student.course}
+
+<button class="deleteBtn" onclick="deleteStudent(${index})">
+Delete
+</button>
+
+</div>
+`);
+
+});
+
 }
+
 
 // Function to add student
 function addStudent(name, age, course) {
-    let student = {
-        name: name,
-        age: age,
-        course: course
-    };
 
-    students.push(student);
-    displayStudents();
+let student = {
+
+name: name,
+age: age,
+course: course
+
+};
+
+students.push(student);
+
+displayStudents();
+
 }
+
 
 // Function to delete student
 function deleteStudent(index) {
-    students.splice(index, 1);
-    displayStudents();
+
+students.splice(index, 1);
+
+displayStudents();
+
 }
+
 
 // jQuery form submit event
 $("#studentForm").submit(function(event) {
-    event.preventDefault();
 
-    let name = $("#name").val();
-    let age = $("#age").val();
-    let course = $("#course").val();
+event.preventDefault();
 
-    addStudent(name, age, course);
+let name = $("#name").val();
 
-    $("#studentForm")[0].reset();
+let age = $("#age").val();
+
+let course = $("#course").val();
+
+addStudent(name, age, course);
+
+$("#studentForm")[0].reset();
+
 });
 
 </script>
