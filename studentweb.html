@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Management System</title>
 
-<!-- jQuery CDN (IMPORTANT FIX) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <style>
@@ -83,11 +82,10 @@ button {
 
 <script>
 
-// Array to store students
+
 let students = [];
 
 
-// Function to display students
 function displayStudents() {
 
 $("#studentList").html("");
@@ -112,7 +110,7 @@ Delete
 }
 
 
-// Function to add student
+
 function addStudent(name, age, course) {
 
 let student = {
@@ -130,7 +128,7 @@ displayStudents();
 }
 
 
-// Function to delete student
+
 function deleteStudent(index) {
 
 students.splice(index, 1);
@@ -140,7 +138,7 @@ displayStudents();
 }
 
 
-// jQuery form submit event
+
 $("#studentForm").submit(function(event) {
 
 event.preventDefault();
