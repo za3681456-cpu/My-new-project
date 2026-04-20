@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Loop Assignment</title>
+
+<style>
+body{
+    font-family: Arial;
+    background: #f4f4f4;
+    padding: 20px;
+}
+
+.container{
+    background: white;
+    padding: 20px;
+    width: 500px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px gray;
+}
+
+.highlight{
+    color: red;
+    font-weight: bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>JavaScript Loop Tasks</h2>
+
+<input type="number" id="num" placeholder="Enter N">
+<button onclick="runProgram()">Run</button>
+
+<div id="output"></div>
+
+</div>
+
+<script>
+
+function runProgram(){
+
+let n = parseInt(document.getElementById("num").value);
+let output = "";
+
+/* 1. Number Pattern 1 to N */
+output += "<h3>1. Numbers from 1 to " + n + "</h3>";
+
+let i = 1;
+while(i <= n){
+    output += i + " ";
+    i++;
+}
+
+
+
+let even = 0;
+let odd = 0;
+
+i = 1;
+while(i <= n){
+    if(i % 2 == 0){
+        even++;
+    }else{
+        odd++;
+    }
+    i++;
+}
+
+output += "<h3>2. Even & Odd Count</h3>";
+output += "Even: " + even + "<br>";
+output += "Odd: " + odd + "<br>";
+
+
+
+let sum = 0;
+
+i = 1;
+while(i <= n){
+    if(i % 3 == 0 && i % 5 == 0){
+        sum = sum + i;
+    }
+    i++;
+}
+
+output += "<h3>3. Sum Divisible by 3 and 5</h3>";
+output += "Sum: " + sum + "<br>";
+
+
+
+output += "<h3>4. Reverse Numbers (highlight divisible by 4)</h3>";
+
+i = n;
+while(i >= 1){
+
+    if(i % 4 == 0){
+        output += "<span class='highlight'>" + i + "</span> ";
+    }else{
+        output += i + " ";
+    }
+
+    i--;
+}
+
+
+
+output += "<h3>5. Prime Numbers</h3>";
+
+i = 2;
+while(i <= n){
+
+    let isPrime = true;
+    let j = 2;
+
+    while(j < i){
+        if(i % j == 0){
+            isPrime = false;
+            break;
+        }
+        j++;
+    }
+
+    if(isPrime){
+        output += i + " ";
+    }
+
+    i++;
+}
+
+document.getElementById("output").innerHTML = output;
+
+}
+
+</script>
+
+</body>
+</html>

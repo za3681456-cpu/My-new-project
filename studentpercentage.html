@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Marks Calculator</title>
+
+<style>
+body{
+    font-family: Arial;
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+.container{
+    background: white;
+    width: 350px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px gray;
+}
+
+input{
+    width: 90%;
+    padding: 8px;
+    margin: 5px;
+}
+
+button{
+    padding: 10px;
+    width: 95%;
+    background: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover{
+    background: darkgreen;
+}
+
+.result{
+    margin-top: 20px;
+    text-align: left;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Student Marks Calculator</h2>
+
+
+<input type="text" id="name" placeholder="Enter Student Name">
+
+<!-- Subject Marks -->
+<input type="number" id="sub1" placeholder="Subject 1 Marks">
+<input type="number" id="sub2" placeholder="Subject 2 Marks">
+<input type="number" id="sub3" placeholder="Subject 3 Marks">
+
+<button onclick="calculate()">Calculate</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+
+<script>
+function calculate(){
+
+    let name = document.getElementById("name").value;
+
+    let m1 = parseFloat(document.getElementById("sub1").value);
+    let m2 = parseFloat(document.getElementById("sub2").value);
+    let m3 = parseFloat(document.getElementById("sub3").value);
+
+    let total = m1 + m2 + m3;
+    let percentage = (total / 300) * 100;
+
+    document.getElementById("result").innerHTML =
+        "<h3>Result</h3>" +
+        "Student Name: " + name + "<br>" +
+        "Total Marks: " + total + "<br>" +
+        "Percentage: " + percentage.toFixed(2) + "%";
+}
+</script>
+
+</body>
+</html>
